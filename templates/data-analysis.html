@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Analysis Page</title>
+    <style>
+      /* Global Styles */
+      body {
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(to right, #dae2f8, #d6a4a4);
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #444;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .dataset-info {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+
+      .dataset-info h2 {
+        font-size: 1.8rem;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: 500;
+      }
+
+      .dataset-info p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      .dataset-info ul {
+        list-style-type: none;
+        padding: 0;
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.8;
+      }
+
+      .dataset-info ul li {
+        padding-left: 10px;
+      }
+
+      .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .image-item {
+        flex: 1 0 30%;
+        max-width: 30%;
+        box-sizing: border-box;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 20px;
+      }
+
+      .image-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .image-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .image-item {
+          flex: 1 0 45%;
+          max-width: 45%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .image-item {
+          flex: 1 0 90%;
+          max-width: 90%;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .dataset-info h2 {
+          font-size: 1.5rem;
+        }
+
+        .dataset-info p,
+        .dataset-info ul li {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Data Analysis</h1>
+
+      <!-- Dataset Info Section -->
+      <div class="dataset-info">
+        <h2>Dataset Information</h2>
+        <p><strong>Dataset Shape:</strong> (161, 14)</p>
+        <p><strong>Dataset Columns:</strong></p>
+        <ul>
+          <li>Product_id</li>
+          <li>Price</li>
+          <li>Sale</li>
+          <li>Weight</li>
+          <li>Resolution</li>
+          <li>PPI</li>
+          <li>CPU Core</li>
+          <li>CPU Frequency</li>
+          <li>Internal Mem</li>
+          <li>RAM</li>
+          <li>Rear Camera</li>
+          <li>Front Camera</li>
+          <li>Battery</li>
+          <li>Thickness</li>
+        </ul>
+      </div>
+
+      <!-- Image Section -->
+      <div class="image-container">
+        {% for image in images %}
+        <div class="image-item">
+          <img
+            src="{{ url_for('static', filename='images/' + image) }}"
+            alt="Image"
+          />
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
